@@ -2,15 +2,16 @@
 #include <ctime>
 #include "cnumericrow.h"
 
-
 //#include <unistd.h>
 //#include <ncurses.h>
 
 #include <conio.h>
 #include <windows.h>
+
 using namespace std;
 
 bool gameover;
+
 int height;
 int wight;
 int x, y;
@@ -22,12 +23,15 @@ int prev2X, prev2Y;
 int prevX;
 int prevY;
 int flag;
+
 CNumericRow TailX(1);
 CNumericRow TailY(1);
+
 enum Directions
 {
 	Left, Right, Up, Down, Stop
 }; 
+
 Directions dir;
 
 void Setup_game()
@@ -43,6 +47,7 @@ void Setup_game()
 	foodY = 1 + rand() % (height - 2);
 	Speed = 25;
 }
+
 void Controls()
 {
 	if (_kbhit())
@@ -68,6 +73,7 @@ void Controls()
 		}
 	}
 }
+
 void Changes()
 {	
 	if (Tlength > 0)
@@ -118,11 +124,12 @@ void Changes()
 			gameover = 1;
 		}
 	}
-	if (x > 31 || x < 1 || y < 1 || y>31)
+	if (x > 30 || x < 1 || y < 1 || y>30)
 	{
 		gameover = 1;
 	}
 }
+
 void Display()
 {
 	system("cls");
@@ -177,6 +184,7 @@ void Display()
 int main()
 {
 	Setup_game();
+
 	while (!gameover)
 	{
 		Controls();
